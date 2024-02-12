@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulación del DOM</title>
+    <style>
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+    <link rel="stylesheet" href="./assets/css/styles1.css">
+</head>
+<body id="ejemplo_4">
+    <h1>Lista Dinámica</h1>
+    <form>
+        <label for="newItem" style="font-size: 25px;">Nuevo Elemento:</label>
+        <input type="text" id="newItem" placeholder="Item" class="input" />
+        <button type="button" onclick="agregarElemento()" class="agregar">Agregar Elemento</button>
+    </form>
+    
+    <ul id="miLista">
+        <!-- Lista inicial de elementos -->
+        <li>Elemento 1 <button onclick="eliminarElemento(this)">Eliminar</button></li>
+        <li>Elemento 2 <button onclick="eliminarElemento(this)">Eliminar</button></li>
+        <li>Elemento 3 <button onclick="eliminarElemento(this)">Eliminar</button></li>
+    </ul>
+
+    <script>
+        function agregarElemento() {
+            var newItemText = document.getElementById('newItem').value;
+
+            if (newItemText.trim() !== "") {
+                var lista = document.getElementById('miLista');
+                var nuevoElemento = document.createElement('li');
+                nuevoElemento.innerText = newItemText;
+                
+                // Crear un botón "Eliminar" para cada nuevo elemento
+                var btnEliminar = document.createElement('button');
+                btnEliminar.innerText = 'Eliminar';
+                btnEliminar.onclick = function() {
+                    eliminarElemento(this);
+                };
+                
+                // Añadir el botón al nuevo elemento
+                nuevoElemento.appendChild(btnEliminar);
+                
+                // Añadir el nuevo elemento a la lista
+                lista.appendChild(nuevoElemento);
+                
+                // Limpiar el campo de texto
+                document.getElementById('newItem').value = "";
+            } else {
+                alert("Por favor, ingresa un elemento válido.");
+            }
+        }
+
+        function eliminarElemento(elemento) {
+            var lista = document.getElementById('miLista');
+            lista.removeChild(elemento.parentNode);
+        }
+    </script>
+</body>
+</html>

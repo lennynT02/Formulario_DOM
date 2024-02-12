@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/styles1.css">
+    <title>Manipulación del DOM con Lista</title>
+  </head>
+  <body id="ejemplo_2">
+    <h1>Manipulación del DOM con Lista</h1>
+    <div class="container">
+
+      <button onclick="agregarElemento()" class="actualizar">Agregar Elemento</button>
+      <button onclick="quitarElemento()" class="actualizar" q>Quitar Elemento</button>
+    </div>
+    <ul id="miLista">
+      <li>Elemento 1</li>
+      <li>Elemento 2</li>
+      <li>Elemento 3</li>
+    </ul>
+
+    <script>
+      function agregarElemento() {
+        var lista = document.getElementById("miLista");
+        var nuevoElemento = document.createElement("li");
+        nuevoElemento.innerText = "Nuevo Elemento";
+        lista.appendChild(nuevoElemento);
+      }
+
+      function quitarElemento() {
+        var lista = document.getElementById("miLista");
+        if (lista.children.length > 0) {
+          lista.removeChild(lista.lastElementChild);
+        }
+      }
+    </script>
+  </body>
+</html>

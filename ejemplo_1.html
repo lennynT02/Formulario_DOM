@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/styles1.css">
+    <title>Repaso DOM</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Clase DOM</h1>
+
+    </div>
+    
+    <script>
+        var titulo =document.querySelector('h1');
+        titulo.innerText = 'DOM con JS';
+
+        document.body.style.backgroundColor='rgb(255, 252, 80)';
+
+        var contenedor = document.createElement('div');
+        contenedor.className = 'container';
+
+        var areaTexto = document.createElement('input');
+        areaTexto.className = 'input';
+        contenedor.appendChild(areaTexto);
+
+        var boton = document.createElement('button');
+        boton.className = 'actualizar';
+        boton.innerText='Actualizar parrafo';
+        contenedor.appendChild(boton);
+
+        document.body.appendChild(contenedor);
+        document.body.appendChild(document.createElement('br'))
+
+
+        var parrafo = document.createElement('h3');
+        parrafo.innerText = 'Hola soy un parrafo creado con js'
+        document.body.appendChild(parrafo);
+
+        boton.addEventListener('click',function(){
+            parrafo.innerText = areaTexto.value;
+        });
+    </script>
+    
+</body>
+</html>
